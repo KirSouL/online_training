@@ -20,3 +20,7 @@ host    replication     all             ::1/128                 trust
 
 Для работы с проектом необходимо дополнительно создать базу данных в Postgresql
 и указать её в файле .env.sample, далее необходимо сохранить файл .env.sample как .env
+
+feature/task2
+Для дальнейший работы над проектом необходимо произвести загрузку данных в БД.
+В консоли написать команду: python manage.py loaddata online_training_data.json
