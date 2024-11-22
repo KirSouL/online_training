@@ -1,8 +1,19 @@
 from django.urls import path
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework.permissions import AllowAny
 
 from users.apps import UsersConfig
-from users.views import UserCreateAPIView, UserListAPIView, UserUpdateAPIView, UserDestroyAPIView, \
-    UserRetrieveAPIView, PaymentListAPIView, PaymentRetrieveAPIView, PaymentCreateAPIView, PaymentDestroyAPIView
+from users.views import (
+    UserCreateAPIView,
+    UserListAPIView,
+    UserUpdateAPIView,
+    UserDestroyAPIView,
+    UserRetrieveAPIView,
+    PaymentListAPIView,
+    PaymentRetrieveAPIView,
+    PaymentCreateAPIView,
+    PaymentDestroyAPIView
+)
 
 app_name = UsersConfig.name
 
@@ -11,6 +22,8 @@ urlpatterns = [
     path('users_home/view/<int:pk>', UserRetrieveAPIView.as_view(), name='users-view'),
 
     path('users_home/create/', UserCreateAPIView.as_view(), name='users-create'),
+    path('users_home/token/login/', TokenObtainPairView.as_view(), name='token_login'),
+    path('users_home/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     path('users_home/update/<int:pk>', UserUpdateAPIView.as_view(), name='users-update'),
     path('users_home/delete/<int:pk>', UserDestroyAPIView.as_view(), name='users-delete'),
