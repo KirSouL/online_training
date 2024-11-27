@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticate
 from rest_framework.filters import OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
+from lms.paginators import ListPaginator
 from users.models import User, Payment
 from users.serializers import UserSerializer, PaymentSerializer
 
@@ -23,6 +24,7 @@ class UserListAPIView(generics.ListAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = [AllowAny]
+    pagination_class = ListPaginator
 
 
 class UserRetrieveAPIView(generics.RetrieveAPIView):
@@ -54,6 +56,7 @@ class PaymentListAPIView(generics.ListAPIView):
     """Дженерик получения всех платежей"""
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
+    pagination_class = ListPaginator
     filter_backends = [OrderingFilter, DjangoFilterBackend]
     ordering_fields = ['payment_date']
     filterset_fields = ('user', 'payment_course', 'payment_lesson', 'payment_method',)
