@@ -44,6 +44,9 @@ class Payment(models.Model):
     payment_method = models.CharField(max_length=1, verbose_name='Метод оплаты', choices=ChoicePaymentMethod.choices,
                                       default=ChoicePaymentMethod.TRANSFER)
 
+    session_id = models.CharField(max_length=255, verbose_name='id сессии', **NULLABLE)
+    link_to_payment = models.URLField(max_length=400, verbose_name='Ссылка на страничку оплаты переводом', **NULLABLE)
+
     def __str__(self):
         return f"{self.user}, {self.payment_method}"
 
