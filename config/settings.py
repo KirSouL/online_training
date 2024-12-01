@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework_simplejwt',
+    'drf_yasg',
 
     'users',
     'lms',
@@ -140,3 +141,5 @@ AUTH_USER_MODEL = 'users.User'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
+
+SECRET_KEY_STRIPE = os.getenv('SECRET_KEY_STRIPE')
