@@ -36,3 +36,14 @@ feature/task5
 Документацию можно изучить после запуска проекта по пути: http://127.0.0.1:8000/redoc/ или http://127.0.0.1:8000/swagger/
 
 Также подключена система оплаты онлайн курсов и уроков через Stripe.
+
+feature/task6
+
+Реализовано выполнение отложенных задач.
+
+Для запуска обрабочика в консоли прописать:
+1. Для UNIX систем celery -A config worker -l INFO
+2. Для Windows celery -A config worker -l INFO -P eventlet
+
+Для запуска периодической задачи в консоли прописать: 
+celery -A config beat -l INFO
